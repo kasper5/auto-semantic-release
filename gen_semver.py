@@ -90,7 +90,9 @@ def main():
 
         version = bump_version(latest)
 
-    update_package_json(version)
+    if os.path.exists('package.json'):
+        update_package_json(version)
+
     push_repo(version)
     tag_repo(version)
     print(version)
